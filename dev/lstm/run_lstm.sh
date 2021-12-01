@@ -1,0 +1,22 @@
+python -m deeplearning \
+--loss deeplearning.losses.torch.CrossEntropyLoss \
+--optimizer deeplearning.optimizers.torch.AdamW \
+--dataset architecture.dataset.AudioDataset \
+--dataset_wrappers deeplearning.datasets.wrappers.TrainValSplit \
+--model architecture.model.AudioClassifier \
+--model_wrappers deeplearning.models.wrappers.DataParallel \
+--scheduler deeplearning.schedulers.torch.ReduceLROnPlateau \
+--validators deeplearning.validators.classification.ClassificationAccuracy \
+--epochs 100 \
+--data_path features \
+--num_classes 31 \
+--cuda \
+--batch_size 5 \
+--num_classes 31 \
+--val_percent .05 \
+--topn 1 \
+--lr .0003 \
+--save_freq 10 \
+--patience 15 \
+--factor .5 \
+--threshold .01
