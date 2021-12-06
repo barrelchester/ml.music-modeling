@@ -1,0 +1,25 @@
+python -m deeplearning \
+--loss deeplearning.losses.torch.CrossEntropyLoss \
+--optimizer deeplearning.optimizers.torch.Adam \
+--dataset architecture.dataset.AudioDataset \
+--dataset_wrappers deeplearning.datasets.wrappers.TrainValSplit \
+--model architecture.model.AudioClassifier \
+--model_wrappers deeplearning.models.wrappers.DataParallel \
+--scheduler deeplearning.schedulers.torch.ReduceLROnPlateau \
+--validators deeplearning.validators.classification.ClassificationAccuracy \
+--epochs 1000 \
+--data_path /export/astarte/mfcc \
+--cuda \
+--batch_size 50 \
+--num_classes 5 \
+--val_percent .15 \
+--topn 1 \
+--lr .0003 \
+--save_freq 2 \
+--patience 5 \
+--factor .1 \
+--threshold .001 \
+--weight_decay .0001 \
+--standardization_path standardization.p \
+--weight 1.198235 2.02769 1.0 2.03937 1.2989
+#--weight 1.498235 2.22769 1.0 2.33937 1.4989 \
